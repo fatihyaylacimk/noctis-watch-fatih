@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "NOCTIS — Crimson Film",
+  "short_name": "NOCTIS",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#11090c",
+  "theme_color": "#11090c",
+  "icons": [
+    {"src":"assets/noctis-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"assets/noctis-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"assets/noctis-maskable.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ]
+}

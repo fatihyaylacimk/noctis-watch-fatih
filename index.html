@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#110509">
+  <meta name="description" content="Kızıl ışık, hareket eden kuzgunlar ve sinematik bir saat deneyimi. Filmi izle veya kaydırarak sahneleri yönet.">
+  <title>NOCTIS — Crimson Film</title>
+  <link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/film-poster.webp">
+  <link rel="stylesheet" href="cinematic.css">
+  <meta name="application-name" content="NOCTIS">
+  <meta name="apple-mobile-web-app-title" content="NOCTIS">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta property="og:site_name" content="NOCTIS">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/noctis-192.png">
+  <link rel="icon" href="assets/noctis-192.png" type="image/png" sizes="192x192">
+  <link rel="stylesheet" href="branding.css">
+  <script src="i18n.js?v=3" defer></script>
+  <script src="cinematic.js?v=3" defer></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="muted" viewBox="0 0 24 24"><path d="m10 5-5 4H2v6h3l5 4 0-14Zm6 4 6 6m0-6-6 6"/></symbol>
+    <symbol id="sound" viewBox="0 0 24 24"><path d="m10 5-5 4H2v6h3l5 4V5Zm5 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="replay" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 0 5M4 4v6h6"/></symbol>
+    <symbol id="fullscreen" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="scroll" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="6"/><path d="M12 6v5"/></symbol>
+  </svg>
+  <main class="film-journey" id="film-journey"><h1 class="sr-only">Crimson — Sinematik saat filmi</h1>
+    <div class="cinema" id="cinema">
+      <div class="ambient" aria-hidden="true"><canvas id="ambient-canvas" width="180" height="320"></canvas></div>
+      <div class="film-frame"><video id="film" autoplay muted loop playsinline preload="auto" poster="assets/film-poster.webp" aria-label="Kızıl bir katedralden saat ve kuzgun detaylarına ilerleyen sinematik reklam filmi"><source src="assets/crimson-film.mp4" type="video/mp4">Bu tarayıcı video oynatmayı desteklemiyor.</video></div>
+      <div class="edge-shading" aria-hidden="true"></div><button type="button" class="exit-theatre" id="exit-theatre" aria-label="Sinema görünümünden çık" hidden>GÖRÜNÜMDEN ÇIK <span aria-hidden="true">×</span></button>
+      <header class="cinema-header"><a class="brand" href="index.html" aria-label="NOCTIS film başlangıcı">NOCTIS<span>A CINEMATIC STUDY</span></a><div class="header-actions"><nav class="language-switch" data-language-switch aria-label="Dil seçimi"><button type="button" data-language="tr" lang="tr" aria-label="Türkçe" aria-pressed="true">TR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></nav><a class="design-link" href="atelier.html#koleksiyon">Tasarımı incele<svg aria-hidden="true"><use href="#arrow"/></svg></a></div></header>
+      <div class="side-note" aria-hidden="true"><span>CRIMSON</span><i></i><span>IN MOTION</span></div>
+      <div class="center-gate" id="center-gate" hidden><button type="button" id="start-film" class="start-film"><span class="start-circle"><svg aria-hidden="true"><use href="#play"/></svg></span><span>FİLMİ BAŞLAT</span></button></div>
+      <div class="film-loading" id="film-loading" role="status"><span></span>SAHNE HAZIRLANIYOR</div>
+      <div class="film-error" id="film-error" role="alert" hidden><p>Film yüklenemedi.</p><button type="button" id="retry-film">Yeniden dene</button></div>
+      <nav class="scene-list" aria-label="Film sahneleri"><button type="button" data-seek="0" aria-label="Eşik sahnesi" aria-current="step"><span>01</span><i></i></button><button type="button" data-seek="3.4" aria-label="Çan sahnesi"><span>02</span><i></i></button><button type="button" data-seek="4.8" aria-label="Metal sahnesi"><span>03</span><i></i></button><button type="button" data-seek="7.8" aria-label="Kuzgun ve saat sahnesi"><span>04</span><i></i></button></nav>
+      <div class="scroll-message" id="scroll-message" hidden><svg aria-hidden="true"><use href="#scroll"/></svg><span>KAYDIR · SAHNE SENİN KONTROLÜNDE</span></div>
+      <footer class="film-controls" aria-label="Film kontrolleri">
+        <div class="chapter-info"><span id="chapter-number">01</span><span class="short-rule"></span><span id="chapter-name">EŞİK</span><span class="chapter-total">/ 04</span></div>
+        <div class="timeline"><label class="sr-only" for="film-progress">Film konumu</label><input id="film-progress" type="range" min="0" max="1000" step="1" value="0" aria-valuetext="0 saniye"><span class="timeline-track" aria-hidden="true"><span id="timeline-fill"></span></span></div>
+        <div class="controls-row"><div class="playback-buttons"><button type="button" id="play-toggle" class="icon-button" aria-label="Filmi duraklat"><svg aria-hidden="true"><use href="#pause"/></svg></button><button type="button" id="replay-film" class="icon-button" aria-label="Filmi yeniden başlat"><svg aria-hidden="true"><use href="#replay"/></svg></button><span class="film-time"><span id="current-time">00:00</span><i>/</i><span id="total-time">00:12</span></span></div><button type="button" id="mode-toggle" class="mode-toggle" aria-pressed="false"><svg aria-hidden="true"><use href="#scroll"/></svg><span>Kaydırarak yönet</span></button><div class="right-buttons"><button type="button" id="sound-toggle" class="sound-toggle" aria-label="Filmin sesini aç" aria-pressed="false"><svg aria-hidden="true"><use href="#muted"/></svg><span>SES KAPALI</span></button><button type="button" id="fullscreen-toggle" class="icon-button" aria-label="Tam ekranı aç"><svg aria-hidden="true"><use href="#fullscreen"/></svg></button></div></div>
+      </footer>
+    </div>
+  </main>
+  <div class="film-toast" id="film-toast" role="status" aria-live="polite"></div>
+  <noscript><div class="no-js">Filmi izlemek için <a href="assets/crimson-film.mp4">videoyu aç</a>.</div></noscript>
+</body>
+</html>
